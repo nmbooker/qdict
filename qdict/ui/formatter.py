@@ -1,5 +1,7 @@
 #! /usr/bin/env python
 
+"""Helpers to format definition text as HTML."""
+
 class DefinitionFormatter(object):
     """Puts line breaks in expected places."""
     def __init__(self, text):
