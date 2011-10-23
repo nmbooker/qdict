@@ -5,6 +5,7 @@
 from PyQt4 import QtCore, QtGui
 
 import ui_mainwindow
+import formatter
 import dictclient
 
 class MainWindow(QtGui.QMainWindow, ui_mainwindow.Ui_MainWindow):
@@ -32,4 +33,4 @@ class MainWindow(QtGui.QMainWindow, ui_mainwindow.Ui_MainWindow):
         text = definition.getdefstr()
         word = definition.getword()
         dbname = definition.getdb().getname()
-        return "<h2>%s</h2>\n<p>%s</p>\n" % (dbname, text)
+        return "<h2>%s</h2>\n%s" % (dbname, formatter.DefinitionFormatter(text).format())
