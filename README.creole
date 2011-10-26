@@ -16,6 +16,11 @@ package lists any time soon.
 
 Once it's got any more features worth talking about, I'll add them here.
 
+== Dependencies
+* Python (tested with 2.7, should work on 2.6, might on 2.5)
+* PyQt4
+* The 'dictclient' module - available on Ubuntu in 'python-dictclient' package.
+
 == Direction
 I'm currently using the visual design of Fantasdic as the basis, but my main
 target audience is my mum who uses it to help her solve online crosswords,
