@@ -1,5 +1,5 @@
 = Qdict
-* Author: Nick Booker <NMBooker@gmail.com>
+* Author: Nick Booker <NMBooker -AT NOSPAM- gmail.com>
 
 Qdict is a simple graphical program for querying dict servers.
 
