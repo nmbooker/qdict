@@ -1,0 +1,34 @@
+= Qdict
+* Author: Nick Booker <NMBooker@gmail.com>
+
+Qdict is a simple graphical program for querying dict servers.
+
+I decided to work on this because Fantasdic and Kdict have both been dropped
+from the repositories of newer Ubuntu releases, along with many of their
+dependencies; and I really can't be bothered to build all of said dependencies
+manually on each of my machines.
+
+I decided to use PyQt4 on the principle that shouldn't be disappearing from the
+package lists any time soon.
+
+== Features
+* Looks up definitions on the local machine
+
+Once it's got any more features worth talking about, I'll add them here.
+
+== Direction
+I'm currently using the visual design of Fantasdic as the basis, but my main
+target audience is my mum who uses it to help her solve online crosswords,
+so I'll be tweaking it for her needs too.
+
+I do plan some sort of 'crossword helper' feature - how that will turn out
+I don't yet know - it may end up being just a simplified layer on top of
+'regex' to allow specification of a complete word with unknown letters.
+
+Development will probably be quite slow - please be patient.
+
+== Showstopper issues
+This software isn't currently ready for the masses, because:
+* it has 'localhost' hard-coded as the dictionary server (so in order to use it you need to install 'dictd' and some dictionaries),
+* it only does 'define' operations at the moment (no matching),
+* it searches all available databases on the dict server (localhost) - unwanted ones can't be configured out.
