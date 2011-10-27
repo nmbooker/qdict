@@ -15,6 +15,7 @@ class MainWindow(QtGui.QMainWindow, ui_mainwindow.Ui_MainWindow):
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
         self.connect(self.go_button, QtCore.SIGNAL('clicked()'), self.define)
+        self.connect(self.clear_button, QtCore.SIGNAL('clicked()'), self.clear_input)
 
     def define(self):
         """Define the user's word."""
@@ -34,3 +35,8 @@ class MainWindow(QtGui.QMainWindow, ui_mainwindow.Ui_MainWindow):
         word = definition.getword()
         dbname = definition.getdb().getname()
         return "<h2>%s</h2>\n%s" % (dbname, formatter.DefinitionFormatter(text).format())
+
+    def clear_input(self):
+        """Clear and focus the word box."""
+        self.query_editor.clear()
+        self.query_editor.setFocus()
