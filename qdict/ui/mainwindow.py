@@ -15,6 +15,7 @@ class MainWindow(QtGui.QMainWindow, ui_mainwindow.Ui_MainWindow):
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
         self.connect(self.go_button, QtCore.SIGNAL('clicked()'), self.define)
+        self.connect(self.query_editor, QtCore.SIGNAL('returnPressed()'), self.define)
         self.connect(self.clear_button, QtCore.SIGNAL('clicked()'), self.clear_input)
 
     def define(self):
