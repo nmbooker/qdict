@@ -80,6 +80,12 @@ p, li { white-space: pre-wrap; }
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>query_editor</tabstop>
+  <tabstop>method_selector</tabstop>
+  <tabstop>go_button</tabstop>
+  <tabstop>textBrowser</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
