@@ -20,11 +20,18 @@ class MainWindow(QtGui.QMainWindow, ui_mainwindow.Ui_MainWindow):
 
     def define(self):
         """Define the user's word."""
-        server = dictclient.Connection()
         word = self.query_editor.text()
-        definitions = server.define("*", word)
+        try:
+            server = dictclient.Connection()
+            definitions = server.define("*", word)
+        except Exception, exc:
+            self.report_error(str(exc))
+
         if not definitions:
-            return "<h1>No defintions for &quot;%s&quot;</h1>" % word
+            self.textBrowser.setHtml("<h1>No definitions for &quot;%s&quot;</h1>" % word)
+            QtGui.QMessageBox.information(self, "Word not found",
+                    "No definition found for %s" % word)
+            return
         html = "<h1>Definitions for &quot;%s&quot;</h1>" % word
         for definition in definitions:
             html += self.format_definition(definition)
@@ -41,3 +48,11 @@ class MainWindow(QtGui.QMainWindow, ui_mainwindow.Ui_MainWindow):
         """Clear and focus the word box."""
         self.query_editor.clear()
         self.query_editor.setFocus()
+
+
+    def report_error(self, error):
+        """Report an error retrieving definitions."""
+        QtGui.QMessageBox.critical(self,
+                    "QDict Error - Couldn't retrieve definition",
+                    "Couldn't get definition: %s" % error,
+                    )
