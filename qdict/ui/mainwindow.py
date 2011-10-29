@@ -16,7 +16,9 @@ class MainWindow(QtGui.QMainWindow, ui_mainwindow.Ui_MainWindow):
         self.setupUi(self)
         self.connect(self.go_button, QtCore.SIGNAL('clicked()'), self.define)
         self.connect(self.query_editor, QtCore.SIGNAL('returnPressed()'), self.define)
+        self.connect(self.query_editor, QtCore.SIGNAL('textChanged(QString)'), self.switch_go_button)
         self.connect(self.clear_button, QtCore.SIGNAL('clicked()'), self.clear_input)
+        self.switch_go_button()
 
     def define(self):
         """Define the user's word."""
@@ -56,3 +58,7 @@ class MainWindow(QtGui.QMainWindow, ui_mainwindow.Ui_MainWindow):
                     "QDict Error - Couldn't retrieve definition",
                     "Couldn't get definition: %s" % error,
                     )
+
+    def switch_go_button(self):
+        """Decide and set whether the Go button should be clickable."""
+        self.go_button.setEnabled(not self.query_editor.text().isEmpty())
